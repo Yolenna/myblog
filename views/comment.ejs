@@ -1,0 +1,89 @@
+﻿<script>
+	$(document).ready(function(){
+	
+	   $('#comments').click(function () {
+                $('.ui.comments').toggle();
+            });
+	})
+	
+	</script>
+
+<div class="ui horizontal segments">
+                     <button class="ui segment button" id="comments">
+                        <i class="fa fa-comments"></i>comments(<%=post.comments.length%>)
+                    </button>
+                    <button class="ui segment button">
+                         <i class="fa fa-heart"></i>
+                             like
+                    </button>
+               </div>
+			   <div class="ui comments" style="display:none">
+			   <%if(post.comments){%>
+			   <%post.comments.forEach(function(comment,index){%>
+                    <div class="comment">
+                      <a class="avatar">
+                        <img src="/images/head.jpg">
+                        </a>
+                        <div class="content">
+						
+                           <a class="author"><%=comment.name%></a>
+						  
+							<p class="ui text" style="position:absolute;top:-7px;left:150px;">
+							<i class="fa fa-clock-o"></i>
+								<%=comment.time%>
+							</p>
+                            <div class="text">
+                               <%-comment.content%>
+                            </div>
+                           
+                        </div>
+						<%})%>
+						<%}%>
+						<form method="post" class="ui form" style="margin-top:50px;">
+						<%if(user){%>
+						<div class="two fileds">
+								<div class="filed">
+									<lable for="name">姓名：</lable>
+									<input type="text" name="name" placeholder="Name" value="<%=user.username%>"/>
+								</div>
+								<div class="filed">
+									<lable for="email">Email：</lable>
+									<input type="email" name="email" placeholder="Email" value="<%=user.email%>"/>
+								</div>
+							<div>
+						<%}else{%>
+						<div class="two fileds">
+								<div class="filed">
+									<lable for="name">姓名：</lable>
+									<input type="text" name="name" placeholder="Name"/>
+								</div>
+								<div class="filed">
+									<lable for="email">Email：</lable>
+									<input type="email" name="email" placeholder="Email"/>
+								</div>
+							<div>
+						<%}%>
+							
+						
+				
+					<textarea id="editor3" name="content">
+					
+					</textarea>
+					 
+                    <button type="submit" class="ui primary button">发表评论</button>
+                            
+				
+					</form>
+                    </div>
+					
+                </div>
+				<script type="text/javascript">
+    var editor = new wangEditor('editor3');
+   
+	 editor.config.uploadImgUrl = '/upload';
+	 editor.config.uploadHeaders = {
+        'Accept' : 'text/x-json'
+    };
+	 editor.create();
+</script>
+				

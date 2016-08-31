@@ -1,0 +1,71 @@
+﻿<%-include header%>
+
+<style>
+       #one{
+           position:relative;
+        
+         min-height:800px;
+      
+         
+       }
+       .date{position:absolute;top:40px;
+           
+           right:50px;
+       }
+       .auth{position:absolute;top:40px;
+           right:250px;
+       }
+       .label{position:absolute;top:40px;
+          right:150px;
+       }
+       .post{
+           position:absolute;
+           top:70px;
+           left:10%;
+
+       }
+	   .pv{
+	   position:absolute;
+	   right:350px;
+	   top:40px;
+	   }
+
+    </style>
+	<div class="ui text container" style="margin-top:70px;">
+       <div id="one">
+           <div class="ui header centered align" id="title"><h3><%=post.title%></h3></div>
+           <div class="ui content" >
+               <div>
+			   <%if(user&&(user.username=="Yolanda")){%>
+			   
+                       <div >
+                           <a class="item" href="/edit/<%=post.auth%>/<%=post.time.day%>/<%=post.title%>">Edit</a>
+                          <a class="item" href="/remove/<%=post.auth%>/<%=post.time.day%>/<%=post.title%>">Delete</a>
+                          
+                       </div>
+
+				   <%}%>
+
+				    <div class="pv" >阅读量:<%=post.pv%></div>
+                   <div class="auth">作者:<%=post.auth%></div>
+                   <div class="ui blue horizontal label pull-right">
+					<a href="/article/<%=post.tags%>">
+					 <%=post.tags%>
+					</a>
+				   </div>
+                   <div class="date"><%=post.time.day%></div>
+               </div>
+               <div class="post">
+                   <%-post.post%>
+               </div>
+
+           </div>
+		   </div>
+		   <%-include comment%>
+		 
+   </div>
+
+
+ 
+
+ 

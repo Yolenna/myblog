@@ -1,0 +1,62 @@
+﻿<%-include header%>
+<div class="container" style="margin-top:60px;">
+
+        <div class="ui stackable grid sem">
+            <div class="four wide column"></div>
+
+            <div class="eight wide column">
+			
+                <div class="ui segments" style="top:20px; margin-bottom:20px;">
+                    <div class="ui segment">
+                        <h4 class="ui header">Login</h4>
+
+						<%if(success){%>
+								<div ><%=success%></div>
+								 <%}%>
+								 <%if(error){%>
+								<div style="color:red"><%=error%></div>
+								 <%}%>
+							
+						
+                    </div>
+
+                    <div class="ui secondary stackable segment">
+                        <form id="signupForm" class="ui grid form" method="post" style="padding:10px" novalidate="novalidate">
+                      
+                            <div class="row field">
+                                <label class="six wide column" for="username">Username</label>
+                                <div class="eight wide column">
+                                    <div class="ui input">
+                                        <input id="username" name="username" type="text" placeholder="Username" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row field">
+                                <label class="six wide column" for="password">Password</label>
+                                <div class="eight wide column">
+                                    <div class="ui input">
+                                        <input id="password" name="password" type="password" placeholder="Password" />
+                                    </div>
+                                </div>
+                            </div>
+
+                          
+                            <div class="row">
+                                <label class="six wide column"></label>
+                                <div class="eight wide column">
+                                    <button type="submit" class="ui primary button">Login</button>
+                                </div>
+                            </div>
+					</form>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="four wide column"></div>
+        </div>
+    </div>
+	
+   

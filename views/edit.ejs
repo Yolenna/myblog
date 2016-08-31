@@ -1,0 +1,68 @@
+﻿<%-include header %>
+<div class="container">
+    <div class="ui stackable grid sem">
+        <div class="three wide column"></div>
+
+        <div class="eleven wide column">
+            <div class="ui segments" style="top:20px; margin-bottom:20px;">
+                <div class="ui segment">
+                    <h4 class="ui header">Edit</h4>
+					<%if(success){%>
+								<div><%=success%></div>
+								 <%}%>
+								 <%if(error){%>
+								<div style="color:red;"><%=error%></div>
+								 <%}%>
+                </div>
+
+                <div class="ui secondary stackable segment">
+                    <form class="ui grid form" style="padding:10px" novalidate="novalidate"
+					method="post">
+                        <div class="row field">
+                            <label class="six wide column" for="title">Title</label>
+                            <div class="eight wide column">
+                                <div class="ui input">
+                                    <input id="title" name="title" type="text" value="<%=post.title%>" disabled="disabled"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row field">
+                            <label class="six wide column" for="tags">Tags</label>
+                            <div class="eight wide column">
+                                <div class="ui input">
+                                    <input id="tags" name="tags" type="text" value="<%=post.tags%>" disabled="disabled"  />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row field">
+                            <textarea  id="editor2" cols="130" rows="100"  style="width:800px;height:700px;
+							overflow:scroll;" wrap="virtual" name="post">
+							<%=post.post%>
+							</textarea>
+                        </div>
+
+                       <div class="row">
+                            <label class="six wide column"></label>
+                            <div class="eight wide column">
+                                <button type="submit" class="ui primary button">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="two wide column"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var editor = new wangEditor('editor2');
+   
+	 editor.config.uploadImgUrl = '/upload';
+	 editor.config.uploadHeaders = {
+        'Accept' : 'text/x-json'
+    };
+	 editor.create();
+</script>

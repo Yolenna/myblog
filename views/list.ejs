@@ -1,0 +1,89 @@
+<%-include header%> 
+<style>
+       
+       .date{
+           position:absolute;
+           right:10px;
+           top:10px;
+       }
+       .label{
+           position:absolute;
+           right:120px;
+           top:10px;
+       }
+       #list{
+           border-top:1px #ded9d9 solid;
+       }
+	   
+	   .pv{
+	   position:absolute;
+	   right:250px;
+	   top:10px;
+	   }
+	   .edit{
+	   position:absolute;
+	   right:350px;
+	   top:10px;
+	   }
+
+    </style>
+	
+ <div class="container">
+        <div class="ui stackable grid sem">
+            <div class="four wide column"></div>
+
+            <div class="eight wide column " style="margin-top:60px; min-height:800px;">
+			<%posts.forEach(function(post,index){%>
+               <div style="width:100%; height:65px; position:relative;" id="list">
+                    <a href="/u/<%=post.auth%>/<%=post.time.day%>/<%=post.title%>" data-inverted=""
+                       data-tooltip="点击查看全文"
+                       data-position="top right"><h3><%=post.title%></h3></a>
+                    <a class="ui blue horizontal label pull-right" href="/article/<%=post.tags%>">
+						<%=post.tags%>
+					</a>
+					<div class="pv">阅读量：
+					<%if(post.pv){%>
+					<%=post.pv%>
+					<%}else{%>
+					0
+					<%}%>
+					</div>
+                    <div class="date"><%=post.time.minute%></div>
+					 <%if(user&&(user.username=="Yolanda")){%>
+			   
+                       <div class="edit">
+                           <a class="item" href="/edit/<%=post.auth%>/<%=post.time.day%>/<%=post.title%>">Edit</a>
+                          <a class="item" href="/remove/<%=post.auth%>/<%=post.time.day%>/<%=post.title%>">Delete</a>
+                          
+                       </div>
+
+				   <%}%>
+                    <div style="width:100%;height:20px; margin-top:8px; overflow:hidden"><%-post.post%></div>
+                </div>
+				<%})%>
+				<div class="ui buttons pull-right" style="margin-top:30px;">
+				<%if(!isFirstPage){%>
+					<a class="ui button primary" title="上一页" href="?p=<%=page-1%>">上一页</a>
+				<%}%>
+				<%if(!isLastPage){%>
+				<a class="ui button primary" title="下一页" href="?p=<%=page+1%>">下一页</a>
+				<%}%>
+				</div>
+
+            </div>
+            <div class="four wide column">
+				<div class="ui rasied segment" 
+				style="width:200px;height:100%;margin-left:50px;margin-top:60px;">
+					<div style="padding:10px;">
+						<div class="ui centerd header">文章分类</div>
+						<div class="ui divider"></div>
+						<%tags.forEach(function(tag,index){%>
+						<p><a href="/article/<%=tag%>"><%=tag%></a></p>
+							<%})%>
+							<div class="ui divider"></div>
+						</div>
+					</div>
+				</div>
+		 </div>
+    </div>
+	<%-include footer%>

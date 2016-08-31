@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+   
+   
+    <link href="/stylesheets/style.css" rel="stylesheet" />
+    <link href="/stylesheets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <script src="/javascripts/jquery.min.js"></script>
+   
+ <link href="/stylesheets/wangEditor/dist/css/wangEditor.min.css" rel="stylesheet"/>
+ <script src="/stylesheets/wangEditor/dist/js/wangEditor.min.js"></script>
+ 
+<title>Yolanda's blog</title>
+ <script src="/javascripts/semantic.js"></script> 
+ <link href="/stylesheets/semantic.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="page">
+     
+      <div style="display:none" id="slidebar" >
+            <div class="ui container text center align">
+                <a class="toc item ">
+                    <i class="fa fa-bars fa-lg"></i>
+                    Yolenna's Blog
+                </a>
+
+            </div>
+
+        </div>
+
+
+        
+        <div class="ui left demo vertical inverted sidebar labeled icon menu" >
+            <a class="item active" href="/"><i class="fa fa-home fa-lg"></i><br /> Home</a>
+            <a class="item" href="/article"><i class="fa fa-file fa-lg"></i><br /> Article</a>
+            <a class="item" href="mailto:fucanlyj@163.com"><i class="fa  fa-envelope-o fa-lg"></i><br /> Email</a>
+			<%if(user&&user.username=="Yolanda"){%>
+				 <a class="item" href="/post"><i class="fa fa-pencil-square-o fa-lg "></i> Post</a>
+				 <%}%>
+				  <%if(user){%>
+				  <a class="item" href="/logout"><i class="fa fa-sign-up fa-lg"></i>Logout</a>
+				 <%}else{%>
+			<a class="item" href="/login"><i class="fa fa-sign-in fa-lg"></i>Login</a>
+			<a class="item" href="/register"><i class="fa fa-user fa-lg"></i>Register</a>
+				<%}%>
+            <a class="item"><i class="fa fa-github fa-lg" href="https://github.com/Yolenna"></i><br /> Github</a>
+
+        </div>
+        <!--slide bar end-->
+        <!--nav start-->
+        <div id="nav" class="ui container" >
+            <div class="ui left vertical inverted labeled icon  menu fixed" style="height:100%">
+                <a class="item icon header">
+                    <img src="/images/logo2.png" />
+                    Yolenna'Blog
+                </a>
+                <a class="item " href="/"><i class="fa fa-home fa-lg"></i> Home</a>
+                <a class="ui left pointing dropdown item" href="/article">
+                    <i class="fa fa-file fa-lg"></i> Article
+                    <div class="menu inverted">
+                        <div class="item"></div>
+                        <div></div>
+
+                    </div>
+                </a> 
+				<a class="item" href="mailto:fucuanlyj@163.com"><i class="fa  fa-envelope-o fa-lg"></i> Email</a>
+
+				<%if(user&&user.username=="Yolanda"){%>
+				 <a class="item" href="/post"><i class="fa fa-pencil-square-o fa-lg "></i> Post</a>
+				 <%}%>
+			    <%if(user){%>
+				  <a class="item" href="/logout"><i class="fa fa-sign-up fa-lg"></i>Logout</a>
+				 <%}else{%>
+               
+                <a class="item" href="/login"><i class="fa fa-sign-in fa-lg"></i>Login</a>
+				<a class="item" href="/register"><i class="fa fa-user fa-lg"></i>Register</a>
+				<%}%>
+               
+                <a class="ui item" href="https://github.com/Yolenna"><i class="fa fa-github fa-lg" ></i> Github</a>
+
+
+            </div>
+
+        </div>
+		
+<script type="text/javascript">
+        $(document).ready(function () {
+            
+                $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            .sidebar('setting', 'transition', 'push');
+           });
+  </script> 
+
+      
